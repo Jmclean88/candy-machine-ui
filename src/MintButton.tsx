@@ -57,7 +57,7 @@ export const MintButton = ({
       return "WHITELIST MINT";
     }
 
-    return "MINT";
+    return "BE YOUR FAN";
   };
 
   useEffect(() => {

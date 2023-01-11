@@ -466,7 +466,11 @@ const Home = (props: HomeProps) => {
   }, [refreshCandyMachineState]);
 
   return (
+
     <Container style={{ marginTop: 100 }}>
+
+
+
       <Container maxWidth="xs" style={{ position: "relative" }}>
         <Paper
           style={{
@@ -505,11 +509,8 @@ const Home = (props: HomeProps) => {
                     <Typography
                       variant="h6"
                       color="textPrimary"
-                      style={{
-                        fontWeight: "bold",
-                      }}
                     >
-                      {`${itemsRemaining}`}
+                      SECRET
                     </Typography>
                   </Grid>
                   <Grid item xs={4}>
@@ -521,13 +522,13 @@ const Home = (props: HomeProps) => {
                     <Typography
                       variant="h6"
                       color="textPrimary"
-                      style={{ fontWeight: "bold" }}
+
                     >
                       {isWhitelistUser && discountPrice
-                        ? `◎ ${formatNumber.asNumber(discountPrice)}`
+                        ? "   FREE"
                         : `◎ ${formatNumber.asNumber(
-                            candyMachine.state.price
-                          )}`}
+                          candyMachine.state.price
+                        )}`}
                     </Typography>
                   </Grid>
                   <Grid item xs={5}>
@@ -557,18 +558,18 @@ const Home = (props: HomeProps) => {
                           style={{ justifyContent: "flex-end" }}
                           status={
                             candyMachine?.state?.isSoldOut ||
-                            (endDate && Date.now() > endDate.getTime())
+                              (endDate && Date.now() > endDate.getTime())
                               ? "COMPLETED"
                               : isPresale
-                              ? "PRESALE"
-                              : "LIVE"
+                                ? "PRESALE"
+                                : "GOOD LUCK"
                           }
                           onComplete={toggleMintButton}
                         />
                         {isPresale &&
                           candyMachine.state.goLiveDate &&
                           candyMachine.state.goLiveDate.toNumber() >
-                            new Date().getTime() / 1000 && (
+                          new Date().getTime() / 1000 && (
                             <Typography
                               variant="caption"
                               align="center"
@@ -585,9 +586,9 @@ const Home = (props: HomeProps) => {
               )}
               <MintContainer>
                 {candyMachine?.state.isActive &&
-                candyMachine?.state.gatekeeper &&
-                publicKey &&
-                anchorWallet?.signTransaction ? (
+                  candyMachine?.state.gatekeeper &&
+                  publicKey &&
+                  anchorWallet?.signTransaction ? (
                   <GatewayProvider
                     wallet={{
                       publicKey:
@@ -633,7 +634,9 @@ const Home = (props: HomeProps) => {
             display="block"
             style={{ marginTop: 7, color: "grey" }}
           >
-            Powered by METAPLEX
+            Powered by The Average Joes Ecosystem
+            <br></br>
+            PS you have the lucky token to see this mint site
           </Typography>
         </Paper>
       </Container>
@@ -652,6 +655,27 @@ const Home = (props: HomeProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
+
+      <Typography align="center" variant="h4" color="textSecondary">
+        <br></br>
+        <br></br>
+        This free mint is simple.
+        <br></br>
+        If you dont like your Joe, send it to the treasury
+        <br></br>
+        You will be able to mint another one once send funds
+        <br></br> <br></br>
+        1st Mint: Free, 2nd = 25 USDC, 3rd = 50 USDC, 4th = 100 USDC
+        <br></br> <br></br>
+        Wallet Address:
+        <br></br>
+        AJAZgjg4FxhxdBPZcXpX68cLSd4QNomp42jGgv5nWiSk
+        <br></br>
+        Once sent; tweet @AJ_NFT_Intern so he can help using this link:
+        <br></br>
+        <a href="https://ctt.ac/PjLc2">Tweet at the Intern!</a>
+      </Typography>
+
     </Container>
   );
 };
@@ -670,8 +694,8 @@ const getCountdownDate = (
     candyMachine.state.goLiveDate
       ? candyMachine.state.goLiveDate
       : candyMachine.state.isPresale
-      ? new anchor.BN(new Date().getTime() / 1000)
-      : undefined
+        ? new anchor.BN(new Date().getTime() / 1000)
+        : undefined
   );
 };
 
