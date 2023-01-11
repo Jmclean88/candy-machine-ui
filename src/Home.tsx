@@ -665,7 +665,7 @@ const Home = (props: HomeProps) => {
         <br></br>
         You will be able to mint another one once send funds
         <br></br> <br></br>
-        1st Mint: Free, 2nd = 25 USDC, 3rd = 50 USDC, 4th = 100 USDC
+        1st Mint: Free, 2nd = 25 USDC, 3rd = 50 USDC, 4th = 1000 USDC
         <br></br> <br></br>
         Wallet Address:
         <br></br>
